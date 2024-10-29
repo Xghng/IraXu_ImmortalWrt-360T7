@@ -1,4 +1,4 @@
-name: pure-hanwckf_immortalwrt-360t7-frps-passwall
+name: pure-immortalwrt-360t7-frps-passwall
 
 on:
   repository_dispatch:
