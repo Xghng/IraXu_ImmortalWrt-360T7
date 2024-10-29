@@ -1,4 +1,4 @@
-name: pure-hanwckf_immortalwrt-360t7
+name: pure-hanwckf-360t7
 
 on:
   repository_dispatch:
@@ -12,7 +12,7 @@ env:
   REPO_URL: https://github.com/hanwckf/immortalwrt-mt798x
   REPO_BRANCH: openwrt-21.02
   FEEDS_CONF: feeds.conf.default
-  CONFIG_FILE: 360T7-frps.config
+  CONFIG_FILE: pure.config
   DIY_P1_SH: diy-part1.sh
   DIY_P2_SH: diy-part2.sh
   UPLOAD_FIRMWARE: true
@@ -100,8 +100,8 @@ jobs:
         rm -rf *kernel*
         rm -rf *.manifest
         rm -rf sha256sums
-        mv *sysupgrade.bin ${{ env.FIRMWARE_VERSION }}-padavanonly-360T7-108M-sysupgrade.bin
-        mv *factory.bin ${{ env.FIRMWARE_VERSION }}-padavanonly-360T7-108M-factory.bin
+        mv *sysupgrade.bin ${{ env.FIRMWARE_VERSION }}-ImmortalWrt-360T7-108M-sysupgrade.bin
+        mv *factory.bin ${{ env.FIRMWARE_VERSION }}-ImmortalWrt-360T7-108M-factory.bin
         echo "FIRMWARE=$PWD" >> $GITHUB_ENV
         echo "status=success" >> $GITHUB_OUTPUT
         
@@ -109,7 +109,7 @@ jobs:
       uses: actions/upload-artifact@main
       if: steps.organize.outputs.status == 'success' && !cancelled()
       with:
-        name: ${{ env.FIRMWARE_VERSION }}-ImmortalWrt-360T7
+        name: ${{ env.FIRMWARE_VERSION }}-OpenWrt-360T7
         path: ${{ env.FIRMWARE }}
         
     - name: 创建release标签
@@ -117,11 +117,12 @@ jobs:
       if: env.UPLOAD_RELEASE == 'true' && !cancelled()
       run: |
          time=$(date +%Y.%m.%d)
-         release_tag="360T7-padavanonly-ImmortalWrt-$time"
-         release_name="360T7-padavanonly-ImmortalWrt-$time"
-         echo "默认网关：192.168.77.1
-         登录密码：none
-         内置构建eqos、luci-app-ssr-plus、luci-app-openvpn-server、luci-app-frpc、luci-app-autoreboot" >> release.txt
+         release_tag="360T7-hanwckf-ImmortalWrt-$time"
+         release_name="360T7-hanwckf-ImmortalWrt-$time"
+         echo "跟进上游变更
+         默认网关：192.168.77.1
+         登录密码：--
+         内置构建了eqos、luci-app-openvpn-server、luci-app-frpc、luci-app-autoreboot">> release.txt
          echo "release_name=$release_name" >> $GITHUB_OUTPUT
          echo "release_tag=$release_tag" >> $GITHUB_OUTPUT
          echo "status=success" >> $GITHUB_OUTPUT
