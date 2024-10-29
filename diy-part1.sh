@@ -12,8 +12,8 @@
 
 ### 添加第三方订阅源
 sed -i '$a src-git-full small https://github.com/kenzok8/small-package' feeds.conf.default
-git clone https://github.com/CHN-beta/rkp-ipid package/rkp-ipid
-git clone https://github.com/Zxilly/UA2F package/UA2F
+# git clone https://github.com/CHN-beta/rkp-ipid package/rkp-ipid
+# git clone https://github.com/Zxilly/UA2F package/UA2F
 # theme
 # git clone https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon
 # rm -rf package/luci-theme-argon/README* package/luci-theme-argon/Screenshots/
