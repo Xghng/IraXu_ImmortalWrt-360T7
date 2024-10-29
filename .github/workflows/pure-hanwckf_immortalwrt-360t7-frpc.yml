@@ -1,4 +1,4 @@
-name: pure-hanwckf_immortalwrt-360t7-frps
+name: pure-hanwckf_immortalwrt-360t7-frpc
 
 on:
   repository_dispatch:
